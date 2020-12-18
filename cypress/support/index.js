@@ -14,7 +14,11 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-
+import "./commands";
+import "cy-mobile-commands";
+Cypress.on("window:before:load", (win) => {
+  win.indexedDB.deleteDatabase("localforage");
+  win.indexedDB.deleteDatabase("_ionicstorage");
+});
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
